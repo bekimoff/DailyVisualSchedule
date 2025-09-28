@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)
 }
+
+val room_version = "2.8.1" // Example version, please check for the latest!
 
 android {
     namespace = "com.example.dailyvisualschedule"
@@ -39,6 +42,14 @@ android {
 }
 
 dependencies {
+
+    // Room
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version") // For Java projects or if using annotationProcessor
+
+    // To use Kotlin annotation processing tool (kapt)
+    // Or if you're using KSP (Kotlin Symbol Processing) - preferred for Kotlin projects
+    ksp("androidx.room:room-compiler:$room_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dailyvisualschedule.VisualScheduleApplication // Import custom Application class
 import com.example.dailyvisualschedule.databinding.FragmentNightTimeBinding
+import com.example.dailyvisualschedule.ui.ViewModelFactory // Import factory
 import com.example.dailyvisualschedule.ui.daytime.TodoAdapter // Reusing from daytime package
-import com.example.dailyvisualschedule.ui.daytime.TodoItem    // Reusing from daytime package
-import com.example.dailyvisualschedule.R // Make sure this R is your project's R
 
 class NightTimeFragment : Fragment() {
 
@@ -17,7 +18,7 @@ class NightTimeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var todoAdapter: TodoAdapter
-    private val todoList = mutableListOf<TodoItem>()
+    private lateinit var nightTimeViewModel: NightTimeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,15 +28,13 @@ class NightTimeFragment : Fragment() {
         _binding = FragmentNightTimeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Sample Nighttime Data - Ensure these drawables exist in your res/drawable folder!
-        todoList.clear() // Clear any previous items
-        todoList.add(TodoItem(R.drawable.ic_toilet))          // Task: Use toilet
-        todoList.add(TodoItem(R.drawable.ic_toothbrush))      // Task: Brush teeth
-        todoList.add(TodoItem(R.drawable.ic_broom))           // Task: Sweep floor (example)
-        todoList.add(TodoItem(R.drawable.ic_book))            // Task: Read book
-        todoList.add(TodoItem(R.drawable.ic_pyjamas)) // Placeholder for "Go to bed"
+        // Initialize ViewModel using the factory
+        val application = requireActivity().application as VisualScheduleApplication
+        val factory = ViewModelFactory(application.taskDataRepository)
+        nightTimeViewModel = ViewModelProvider(this, factory).get(NightTimeViewModel::class.java)
 
-        todoAdapter = TodoAdapter(todoList)
+        // Initialize Adapter with the ViewModel
+        todoAdapter = TodoAdapter(mutableListOf(), nightTimeViewModel)
 
         binding.recyclerViewTodoNight.apply {
             layoutManager = LinearLayoutManager(context)
@@ -45,8 +44,20 @@ class NightTimeFragment : Fragment() {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Observe LiveData from ViewModel
+        nightTimeViewModel.todoItems.observe(viewLifecycleOwner) { items ->
+            items?.let {
+                todoAdapter.submitList(it)
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.recyclerViewTodoNight.adapter = null 
         _binding = null
     }
 }

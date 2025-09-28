@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dailyvisualschedule.VisualScheduleApplication // Import custom Application class
 import com.example.dailyvisualschedule.databinding.FragmentDayTimeBinding
-import com.example.dailyvisualschedule.R // Make sure this R is your project's R
+import com.example.dailyvisualschedule.ui.ViewModelFactory // Import factory
 
 class DayTimeFragment : Fragment() {
 
@@ -15,7 +17,7 @@ class DayTimeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var todoAdapter: TodoAdapter
-    private val todoList = mutableListOf<TodoItem>()
+    private lateinit var dayTimeViewModel: DayTimeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,15 +27,13 @@ class DayTimeFragment : Fragment() {
         _binding = FragmentDayTimeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Sample Data - Ensure these drawables exist in your res/drawable folder!
-        todoList.clear() // Clear any previous items
-        todoList.add(TodoItem(R.drawable.ic_toilet))          // Task: Use toilet
-        todoList.add(TodoItem(R.drawable.ic_toothbrush))      // Task: Brush teeth
-        todoList.add(TodoItem(R.drawable.ic_clothes)) // Placeholder for "Eat breakfast"
-        todoList.add(TodoItem(R.drawable.ic_shoes))           // Task: Put on shoes
-        todoList.add(TodoItem(R.drawable.ic_backpack))        // Task: Take backpack
+        // Initialize ViewModel using the factory
+        val application = requireActivity().application as VisualScheduleApplication
+        val factory = ViewModelFactory(application.taskDataRepository)
+        dayTimeViewModel = ViewModelProvider(this, factory).get(DayTimeViewModel::class.java)
 
-        todoAdapter = TodoAdapter(todoList)
+        // Initialize Adapter with the ViewModel
+        todoAdapter = TodoAdapter(mutableListOf(), dayTimeViewModel)
 
         binding.recyclerViewTodo.apply {
             layoutManager = LinearLayoutManager(context)
@@ -43,8 +43,20 @@ class DayTimeFragment : Fragment() {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Observe LiveData from ViewModel
+        dayTimeViewModel.todoItems.observe(viewLifecycleOwner) { items ->
+            items?.let {
+                todoAdapter.submitList(it)
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.recyclerViewTodo.adapter = null 
         _binding = null
     }
 }
