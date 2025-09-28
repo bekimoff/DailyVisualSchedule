@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp" 
+    android:gravity="center_vertical">
+
+    <ImageButton
+        android:id="@+id/button_star_ellie"
+        android:layout_width="72dp" 
+        android:layout_height="72dp"
+        android:scaleType="fitCenter"
+        android:padding="4dp" 
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Ellie's completion star"
+        android:src="@android:drawable/btn_star_big_off" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/image_view_task_icon"
+        android:layout_width="128dp" 
+        android:layout_height="128dp"
+        android:scaleType="centerInside"
+        tools:src="@android:drawable/sym_def_app_icon"
+        android:contentDescription="Task image" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <ImageButton
+        android:id="@+id/button_star_ada"
+        android:layout_width="72dp" 
+        android:layout_height="72dp"
+        android:scaleType="fitCenter"
+        android:padding="4dp" 
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Ada's completion star"
+        android:src="@android:drawable/btn_star_big_off" />
+
+</LinearLayout>

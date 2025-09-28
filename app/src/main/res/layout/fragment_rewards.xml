@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.rewards.RewardsFragment">
+
+    <!-- Progress Bar 1 -->
+    <TextView
+        android:id="@+id/text_view_label_progress_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ellie" 
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:max="200"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_progress_1_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_label_progress_1"
+        tools:progress="75" />
+
+    <TextView
+        android:id="@+id/text_view_progress_1_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/progress_bar_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/progress_bar_1"
+        app:layout_constraintTop_toTopOf="@id/progress_bar_1"
+        tools:text="75/200" />
+
+    <!-- Milestones for Progress Bar 1 -->
+    <ImageView
+        android:id="@+id/image_view_star_1_10"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_1_10"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_1_10"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_1_10"
+        android:contentDescription="Reward 1 Milestone 10 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_1_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        app:layout_constraintStart_toStartOf="@id/progress_bar_1"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_1"
+        app:layout_constraintHorizontal_bias="0.05" 
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_1"/>
+
+    <ImageView
+        android:id="@+id/image_view_star_1_50"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_1_50"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_1_50"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_1_50"
+        android:contentDescription="Reward 1 Milestone 50 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_1_50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50"
+        app:layout_constraintStart_toStartOf="@id/progress_bar_1"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_1"
+        app:layout_constraintHorizontal_bias="0.25" 
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_1"/>
+
+    <ImageView
+        android:id="@+id/image_view_star_1_100"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_1_100"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_1_100"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_1_100"
+        android:contentDescription="Reward 1 Milestone 100 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_1_100"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        app:layout_constraintStart_toStartOf="@id/progress_bar_1"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_1"
+        app:layout_constraintHorizontal_bias="0.5" 
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_1"/>
+
+    <ImageView
+        android:id="@+id/image_view_star_1_200"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_1_200"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_1_200"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_1_200"
+        android:contentDescription="Reward 1 Milestone 200 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_1_200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="200"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_1"
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_1" />
+
+    <Button
+        android:id="@+id/button_redeem_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Redeem Ellie's Reward" 
+        app:layout_constraintTop_toBottomOf="@id/text_view_milestone_1_100" 
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <!-- Progress Bar 2 -->
+    <TextView
+        android:id="@+id/text_view_label_progress_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ada" 
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_redeem_1" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:max="200"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_progress_2_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_label_progress_2"
+        tools:progress="120" />
+
+    <TextView
+        android:id="@+id/text_view_progress_2_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/progress_bar_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/progress_bar_2"
+        app:layout_constraintTop_toTopOf="@id/progress_bar_2"
+        tools:text="120/200" />
+
+    <!-- Milestones for Progress Bar 2 -->
+    <ImageView
+        android:id="@+id/image_view_star_2_10"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_2_10"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_2_10"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_2_10"
+        android:contentDescription="Reward 2 Milestone 10 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_2_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        app:layout_constraintStart_toStartOf="@id/progress_bar_2"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_2"
+        app:layout_constraintHorizontal_bias="0.05" 
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_2"/>
+
+    <ImageView
+        android:id="@+id/image_view_star_2_50"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_2_50"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_2_50"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_2_50"
+        android:contentDescription="Reward 2 Milestone 50 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_2_50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50"
+        app:layout_constraintStart_toStartOf="@id/progress_bar_2"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_2"
+        app:layout_constraintHorizontal_bias="0.25" 
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_2"/>
+
+    <ImageView
+        android:id="@+id/image_view_star_2_100"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_2_100"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_2_100"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_2_100"
+        android:contentDescription="Reward 2 Milestone 100 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_2_100"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        app:layout_constraintStart_toStartOf="@id/progress_bar_2"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_2"
+        app:layout_constraintHorizontal_bias="0.5" 
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_2"/>
+
+    <ImageView
+        android:id="@+id/image_view_star_2_200"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/text_view_milestone_2_200"
+        app:layout_constraintStart_toStartOf="@id/text_view_milestone_2_200"
+        app:layout_constraintEnd_toEndOf="@id/text_view_milestone_2_200"
+        android:contentDescription="Reward 2 Milestone 200 achieved" />
+    <TextView
+        android:id="@+id/text_view_milestone_2_200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="200"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar_2"
+        app:layout_constraintEnd_toEndOf="@id/progress_bar_2" />
+
+    <Button
+        android:id="@+id/button_redeem_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Redeem Ada's Reward" 
+        app:layout_constraintTop_toBottomOf="@id/text_view_milestone_2_100" 
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_day_time">
+
+    <fragment
+        android:id="@+id/navigation_day_time"
+        android:name="com.example.dailyvisualschedule.ui.daytime.DayTimeFragment"
+        android:label="@string/title_day_time"
+        tools:layout="@layout/fragment_day_time" />
+
+    <fragment
+        android:id="@+id/navigation_night_time"
+        android:name="com.example.dailyvisualschedule.ui.nighttime.NightTimeFragment"
+        android:label="@string/title_night_time"
+        tools:layout="@layout/fragment_night_time" />
+
+    <fragment
+        android:id="@+id/navigation_rewards"
+        android:name="com.example.dailyvisualschedule.ui.rewards.RewardsFragment"
+        android:label="@string/title_rewards"
+        tools:layout="@layout/fragment_rewards" />
+</navigation>

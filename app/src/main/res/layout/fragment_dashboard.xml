@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <!-- Toilet -->
+    <ImageView
+        android:id="@+id/imageViewToilet"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Toilet Icon" />
+
+    <TextView
+        android:id="@+id/textViewToilet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Toilet"
+        app:layout_constraintStart_toEndOf="@+id/imageViewToilet"
+        app:layout_constraintTop_toTopOf="@+id/imageViewToilet"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewToilet"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewToiletStar" />
+
+    <ImageView
+        android:id="@+id/imageViewToiletStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewToilet"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewToilet"
+        android:contentDescription="Toilet Star" />
+
+    <!-- Toothbrush -->
+    <ImageView
+        android:id="@+id/imageViewToothbrush"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewToilet"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Toothbrush Icon" />
+
+    <TextView
+        android:id="@+id/textViewToothbrush"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Toothbrush"
+        app:layout_constraintStart_toEndOf="@+id/imageViewToothbrush"
+        app:layout_constraintTop_toTopOf="@+id/imageViewToothbrush"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewToothbrush"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewToothbrushStar" />
+
+    <ImageView
+        android:id="@+id/imgToothbrushStarIcon" 
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewToothbrush"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewToothbrush"
+        android:contentDescription="Toothbrush Star" />
+
+    <!-- Hairbrush -->
+    <ImageView
+        android:id="@+id/imageViewHairbrush"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewToothbrush"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Hairbrush Icon" />
+
+    <TextView
+        android:id="@+id/textViewHairbrush"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Hairbrush"
+        app:layout_constraintStart_toEndOf="@+id/imageViewHairbrush"
+        app:layout_constraintTop_toTopOf="@+id/imageViewHairbrush"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewHairbrush"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewHairbrushStar" />
+
+    <ImageView
+        android:id="@+id/imageViewHairbrushStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewHairbrush"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewHairbrush"
+        android:contentDescription="Hairbrush Star" />
+
+    <!-- Clothes -->
+    <ImageView
+        android:id="@+id/imageViewClothes"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHairbrush"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Clothes Icon" />
+
+    <TextView
+        android:id="@+id/textViewClothes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Clothes"
+        app:layout_constraintStart_toEndOf="@+id/imageViewClothes"
+        app:layout_constraintTop_toTopOf="@+id/imageViewClothes"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewClothes"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewClothesStar" />
+
+    <ImageView
+        android:id="@+id/imageViewClothesStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewClothes"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewClothes"
+        android:contentDescription="Clothes Star" />
+
+    <!-- EatBreakfast -->
+    <ImageView
+        android:id="@+id/imageViewEatBreakfast"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewClothes"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="EatBreakfast Icon" />
+
+    <TextView
+        android:id="@+id/textViewEatBreakfast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Eat Breakfast"
+        app:layout_constraintStart_toEndOf="@+id/imageViewEatBreakfast"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEatBreakfast"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEatBreakfast"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewEatBreakfastStar" />
+
+    <ImageView
+        android:id="@+id/imageViewEatBreakfastStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEatBreakfast"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEatBreakfast"
+        android:contentDescription="EatBreakfast Star" />
+
+    <!-- Backpack -->
+    <ImageView
+        android:id="@+id/imageViewBackpack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEatBreakfast"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Backpack Icon" />
+
+    <TextView
+        android:id="@+id/textViewBackpack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Backpack"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBackpack"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBackpack"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBackpack"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewBackpackStar" />
+
+    <ImageView
+        android:id="@+id/imageViewBackpackStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBackpack"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBackpack"
+        android:contentDescription="Backpack Star" />
+
+    <!-- EatSnack -->
+    <ImageView
+        android:id="@+id/imageViewEatSnack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackpack"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="EatSnack Icon" />
+
+    <TextView
+        android:id="@+id/textViewEatSnack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Eat Snack"
+        app:layout_constraintStart_toEndOf="@+id/imageViewEatSnack"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEatSnack"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEatSnack"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewEatSnackStar" />
+
+    <ImageView
+        android:id="@+id/imageViewEatSnackStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEatSnack"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEatSnack"
+        android:contentDescription="EatSnack Star" />
+
+    <!-- Homework -->
+    <ImageView
+        android:id="@+id/imageViewHomework"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEatSnack"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Homework Icon" />
+
+    <TextView
+        android:id="@+id/textViewHomework"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Homework"
+        app:layout_constraintStart_toEndOf="@+id/imageViewHomework"
+        app:layout_constraintTop_toTopOf="@+id/imageViewHomework"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewHomework"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewHomeworkStar" />
+
+    <ImageView
+        android:id="@+id/imageViewHomeworkStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewHomework"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewHomework"
+        android:contentDescription="Homework Star" />
+
+    <!-- PlayTime -->
+    <ImageView
+        android:id="@+id/imageViewPlayTime"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewHomework"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="PlayTime Icon" />
+
+    <TextView
+        android:id="@+id/textViewPlayTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Play Time"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPlayTime"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPlayTime"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPlayTime"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewPlayTimeStar" />
+
+    <ImageView
+        android:id="@+id/imageViewPlayTimeStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPlayTime"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPlayTime"
+        android:contentDescription="PlayTime Star" />
+
+    <!-- CleanUp -->
+    <ImageView
+        android:id="@+id/imageViewCleanUp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPlayTime"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="CleanUp Icon" />
+
+    <TextView
+        android:id="@+id/textViewCleanUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Clean Up"
+        app:layout_constraintStart_toEndOf="@+id/imageViewCleanUp"
+        app:layout_constraintTop_toTopOf="@+id/imageViewCleanUp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewCleanUp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewCleanUpStar" />
+
+    <ImageView
+        android:id="@+id/imageViewCleanUpStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewCleanUp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewCleanUp"
+        android:contentDescription="CleanUp Star" />
+
+    <!-- Dinner -->
+    <ImageView
+        android:id="@+id/imageViewDinner"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCleanUp"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Dinner Icon" />
+
+    <TextView
+        android:id="@+id/textViewDinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Dinner"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDinner"
+        app:layout_constraintTop_toTopOf="@+id/imageViewDinner"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewDinner"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewDinnerStar" />
+
+    <ImageView
+        android:id="@+id/imageViewDinnerStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewDinner"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewDinner"
+        android:contentDescription="Dinner Star" />
+
+    <!-- Bath -->
+    <ImageView
+        android:id="@+id/imageViewBath"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDinner"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Bath Icon" />
+
+    <TextView
+        android:id="@+id/textViewBath"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Bath"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBath"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBath"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBath"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewBathStar" />
+
+    <ImageView
+        android:id="@+id/imageViewBathStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBath"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBath"
+        android:contentDescription="Bath Star" />
+
+    <!-- Pajamas -->
+    <ImageView
+        android:id="@+id/imageViewPajamas"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBath"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Pajamas Icon" />
+
+    <TextView
+        android:id="@+id/textViewPajamas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Pajamas"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPajamas"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPajamas"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPajamas"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewPajamasStar" />
+
+    <ImageView
+        android:id="@+id/imageViewPajamasStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPajamas"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPajamas"
+        android:contentDescription="Pajamas Star" />
+
+    <!-- ReadBook -->
+    <ImageView
+        android:id="@+id/imageViewReadBook"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPajamas"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="ReadBook Icon" />
+
+    <TextView
+        android:id="@+id/textViewReadBook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Read Book"
+        app:layout_constraintStart_toEndOf="@+id/imageViewReadBook"
+        app:layout_constraintTop_toTopOf="@+id/imageViewReadBook"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewReadBook"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewReadBookStar" />
+
+    <ImageView
+        android:id="@+id/imageViewReadBookStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewReadBook"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewReadBook"
+        android:contentDescription="ReadBook Star" />
+
+    <!-- Sleep -->
+    <ImageView
+        android:id="@+id/imageViewSleep"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewReadBook"
+        android:src="@drawable/ic_launcher_foreground" 
+        android:contentDescription="Sleep Icon" />
+
+    <TextView
+        android:id="@+id/textViewSleep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Sleep"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSleep"
+        app:layout_constraintTop_toTopOf="@+id/imageViewSleep"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewSleep"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewSleepStar" />
+
+    <ImageView
+        android:id="@+id/imageViewSleepStar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@android:drawable/star_off" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewSleep"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewSleep"
+        android:contentDescription="Sleep Star" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
