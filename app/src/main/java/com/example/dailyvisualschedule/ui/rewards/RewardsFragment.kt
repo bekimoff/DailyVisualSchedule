@@ -17,6 +17,7 @@ import android.widget.TextView // Import TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController // Added for navigation
 import com.example.dailyvisualschedule.R
 import com.example.dailyvisualschedule.VisualScheduleApplication
 import com.example.dailyvisualschedule.databinding.FragmentRewardsBinding
@@ -109,11 +110,9 @@ class RewardsFragment : Fragment() {
 
         builder.setPositiveButton("OK") { dialog, _ ->
             val password = input.text.toString()
-            // For now, using a hardcoded password. 
-            // Consider a more secure way to store/manage this if needed.
             if (password == "1234") { 
-                Toast.makeText(context, "Password Correct! Navigating to Parental Controls...", Toast.LENGTH_SHORT).show()
-                // TODO: Navigate to the Parental Fulfillment Fragment here
+                // Navigate to ParentalFulfillmentFragment
+                findNavController().navigate(R.id.action_rewards_to_parental_fulfillment)
             } else {
                 Toast.makeText(context, "Incorrect Password", Toast.LENGTH_SHORT).show()
             }
@@ -162,9 +161,9 @@ class RewardsFragment : Fragment() {
             .setPositiveButton("Confirm") { dialog, _ ->
                 val success = rewardsViewModel.redeemStars(userName, rewardToRedeem.points)
                 if (success) {
+                    rewardsViewModel.recordRewardRedemption(userName, rewardToRedeem) // Store the redeemed reward
                     Toast.makeText(context, "\"${rewardToRedeem.description}\" redeemed for $userName!", Toast.LENGTH_LONG).show()
-                    sendRewardEmail(userName, rewardToRedeem)
-                    // TODO: Add call to repository to store this redeemed reward instance for parent fulfillment list
+                    // sendRewardEmail(userName, rewardToRedeem) // Email sending removed
                 } else {
                     Toast.makeText(context, "Redemption failed unexpectedly.", Toast.LENGTH_SHORT).show()
                 }

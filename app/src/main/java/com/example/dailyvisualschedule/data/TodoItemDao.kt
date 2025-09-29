@@ -19,6 +19,7 @@ interface TodoItemDao {
     @Update
     suspend fun update(item: PersistentTodoItem)
 
+    // Reverted to order by id ASC
     @Query("SELECT * FROM persistent_todo_items WHERE scheduleType = :scheduleType ORDER BY id ASC")
     fun getTasksByScheduleType(scheduleType: String): Flow<List<PersistentTodoItem>>
 

@@ -15,8 +15,12 @@ class VisualScheduleApplication : Application() {
 
     private val applicationScope = CoroutineScope(SupervisorJob())
 
-    val database by lazy { AppDatabase.getDatabase(this, applicationScope) }
-    val taskDataRepository by lazy { TaskDataRepository(database.todoItemDao(), this) }
+    // Removed applicationScope from getDatabase call
+    val database by lazy { AppDatabase.getDatabase(this) }
+    
+    val taskDataRepository by lazy { 
+        TaskDataRepository(database.todoItemDao(), database.redeemedRewardDao(), this)
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -34,8 +38,6 @@ class VisualScheduleApplication : Application() {
             if (currentDateInET != lastResetDate) {
                 taskDataRepository.resetAllTaskCompletions()
                 taskDataRepository.setLastResetDate(currentDateInET)
-                // Optionally, log this event or show a subtle notification if needed,
-                // but for a background process, silent operation is usually best.
             }
         }
     }

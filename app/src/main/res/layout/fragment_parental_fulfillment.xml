@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp" 
+    android:paddingBottom="56dp" 
+    tools:context=".ui.parentfulfillment.ParentalFulfillmentFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewParentalFulfillmentTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Pending Redeemed Rewards"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewUnfulfilledRewards"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" 
+                android:minHeight="100dp" 
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textViewParentalFulfillmentTitle"
+                app:layout_constraintBottom_toTopOf="@+id/textViewManualSetStarsTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/list_item_unfulfilled_reward" />
+
+            <TextView
+                android:id="@+id/textViewNoUnfulfilledRewards"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp" 
+                android:text="No rewards pending fulfillment."
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textViewParentalFulfillmentTitle"
+                app:layout_constraintBottom_toTopOf="@+id/textViewManualSetStarsTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible"/>
+
+            <!-- Manual Star Adjustment Section -->
+            <TextView
+                android:id="@+id/textViewManualSetStarsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" 
+                android:layout_marginBottom="8dp"
+                android:text="Manually Adjust Star Totals"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewUnfulfilledRewards" 
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutEllieStars"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewManualSetStarsTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/textViewEllieCurrentStarsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ellie Current: "/>
+
+                <TextView
+                    android:id="@+id/textViewEllieCurrentStarsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    tools:text="150"/>
+
+                <EditText
+                    android:id="@+id/editTextEllieSetStars"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Set Ellie's Stars"
+                    android:inputType="number"
+                    android:minHeight="48dp"/>
+
+                <Button
+                    android:id="@+id/buttonEllieSetStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutAdaStars"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp" 
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutEllieStars"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"> 
+
+                <TextView
+                    android:id="@+id/textViewAdaCurrentStarsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ada Current: " />
+
+                <TextView
+                    android:id="@+id/textViewAdaCurrentStarsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    tools:text="120"/>
+
+                <EditText
+                    android:id="@+id/editTextAdaSetStars"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Set Ada's Stars"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <Button
+                    android:id="@+id/buttonAdaSetStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"/>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

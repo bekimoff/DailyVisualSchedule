@@ -3,7 +3,9 @@ package com.example.dailyvisualschedule.ui.rewards
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.dailyvisualschedule.data.TaskDataRepository
+import kotlinx.coroutines.launch
 
 class RewardsViewModel(private val repository: TaskDataRepository) : ViewModel() {
 
@@ -37,5 +39,14 @@ class RewardsViewModel(private val repository: TaskDataRepository) : ViewModel()
      */
     fun redeemStars(userName: String, starsToDeduct: Int): Boolean {
         return repository.deductStars(userName, starsToDeduct)
+    }
+
+    /**
+     * Records the instance of a reward being redeemed.
+     */
+    fun recordRewardRedemption(childName: String, reward: MilestoneReward) {
+        viewModelScope.launch {
+            repository.addRedeemedReward(childName, reward)
+        }
     }
 }

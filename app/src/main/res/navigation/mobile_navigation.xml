@@ -21,5 +21,16 @@
         android:id="@+id/navigation_rewards"
         android:name="com.example.dailyvisualschedule.ui.rewards.RewardsFragment"
         android:label="@string/title_rewards"
-        tools:layout="@layout/fragment_rewards" />
+        tools:layout="@layout/fragment_rewards" >
+        <action
+            android:id="@+id/action_rewards_to_parental_fulfillment"
+            app:destination="@id/navigation_parental_fulfillment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_parental_fulfillment"
+        android:name="com.example.dailyvisualschedule.ui.parentfulfillment.ParentalFulfillmentFragment"
+        android:label="Parental Fulfillment" 
+        tools:layout="@layout/fragment_parental_fulfillment" />
+
 </navigation>

@@ -8,4 +8,5 @@ data class TodoItem(
     @DrawableRes val imageResId: Int,
     var isEllieCompleted: Boolean = false,
     var isAdaCompleted: Boolean = false
+    // Removed orderIndex field
 )

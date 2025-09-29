@@ -2,20 +2,25 @@ package com.example.dailyvisualschedule.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.dailyvisualschedule.ui.rewards.MilestoneReward
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context) {
+class TaskDataRepository(
+    private val todoItemDao: TodoItemDao,
+    private val redeemedRewardDao: RedeemedRewardDao,
+    context: Context
+) {
 
-    private val prefsName = "StarCountsPrefs" // Can use the same prefs file or a new one
+    private val prefsName = "StarCountsPrefs"
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
 
     companion object {
         private const val KEY_ELLIE_STARS = "ellie_stars"
         private const val KEY_ADA_STARS = "ada_stars"
-        private const val KEY_LAST_RESET_DATE = "last_reset_date" // New key
+        private const val KEY_LAST_RESET_DATE = "last_reset_date"
     }
 
     // --- Star Counts with StateFlow ---
@@ -34,7 +39,7 @@ class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context)
     }
 
     private fun setStarCount(userName: String, count: Int) {
-        val safeCount = if (count < 0) 0 else count 
+        val safeCount = if (count < 0) 0 else count
         when (userName.lowercase()) {
             "ellie" -> {
                 sharedPreferences.edit().putInt(KEY_ELLIE_STARS, safeCount).apply()
@@ -45,6 +50,10 @@ class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context)
                 _adaStarCount.value = safeCount
             }
         }
+    }
+
+    fun updateStarCountManual(userName: String, newTotal: Int) {
+        setStarCount(userName, newTotal)
     }
 
     fun incrementStarCount(userName: String): Int {
@@ -63,15 +72,15 @@ class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context)
         }
         return currentCount
     }
-    
+
     fun deductStars(userName: String, amountToDeduct: Int): Boolean {
         val currentCount = getStarCount(userName)
         if (currentCount >= amountToDeduct) {
             val newCount = currentCount - amountToDeduct
             setStarCount(userName, newCount)
-            return true 
-        } 
-        return false 
+            return true
+        }
+        return false
     }
 
     fun resetStarCount(userName: String) {
@@ -80,7 +89,7 @@ class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context)
 
     // --- Last Reset Date Management ---
     fun getLastResetDate(): String {
-        return sharedPreferences.getString(KEY_LAST_RESET_DATE, "") ?: "" // Default to empty string
+        return sharedPreferences.getString(KEY_LAST_RESET_DATE, "") ?: ""
     }
 
     fun setLastResetDate(date: String) {
@@ -95,7 +104,12 @@ class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context)
     suspend fun updateTask(item: PersistentTodoItem) {
         todoItemDao.update(item)
     }
-    
+
+    // Removed updateTaskOrder function
+    // suspend fun updateTaskOrder(items: List<PersistentTodoItem>) {
+    //     todoItemDao.updateAll(items)
+    // }
+
     suspend fun insertTask(item: PersistentTodoItem) {
         todoItemDao.insert(item)
     }
@@ -103,4 +117,29 @@ class TaskDataRepository(private val todoItemDao: TodoItemDao, context: Context)
     suspend fun resetAllTaskCompletions() {
         todoItemDao.resetAllTaskCompletions()
     }
+
+    // --- Redeemed Rewards Management ---
+    suspend fun addRedeemedReward(childName: String, reward: MilestoneReward) {
+        val entry = RedeemedRewardEntry(
+            childName = childName,
+            rewardDescription = reward.description,
+            rewardPoints = reward.points,
+            redemptionTimestamp = System.currentTimeMillis(),
+            isFulfilled = false
+        )
+        redeemedRewardDao.insert(entry)
+    }
+
+    fun getUnfulfilledRewards(): Flow<List<RedeemedRewardEntry>> {
+        return redeemedRewardDao.getUnfulfilledRewards()
+    }
+
+    suspend fun markRewardAsFulfilled(rewardEntryId: Int) {
+        // Placeholder - actual update logic is in ViewModel/Fragment or a direct DAO update is preferred
+    }
+
+     suspend fun updateRedeemedRewardEntry(entry: RedeemedRewardEntry) {
+        redeemedRewardDao.update(entry)
+    }
+
 }

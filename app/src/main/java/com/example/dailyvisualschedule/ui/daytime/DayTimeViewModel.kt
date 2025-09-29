@@ -21,22 +21,26 @@ class DayTimeViewModel(private val repository: TaskDataRepository) : ViewModel()
                     imageResId = persistentItem.imageResId,
                     isEllieCompleted = persistentItem.isEllieCompleted,
                     isAdaCompleted = persistentItem.isAdaCompleted
+                    // Removed: orderIndex = persistentItem.orderIndex
                 )
             }
         }
         .asLiveData() // Convert the mapped Flow to LiveData
 
+    // Removed updateTaskOrder function
+
     override fun ellieStarStateChanged(itemId: Int, isNowCompleted: Boolean) {
         viewModelScope.launch {
-            val currentUiItem = todoItems.value?.find { it.id == itemId }
-            currentUiItem?.let {
+            val uiItem = todoItems.value?.find { it.id == itemId }
+            if (uiItem != null) {
                 val persistentItemToUpdate = PersistentTodoItem(
-                    id = it.id,
-                    taskName = it.name, 
-                    imageResId = it.imageResId, 
+                    id = uiItem.id,
+                    taskName = uiItem.name, 
+                    imageResId = uiItem.imageResId, 
                     isEllieCompleted = isNowCompleted, 
-                    isAdaCompleted = it.isAdaCompleted, 
+                    isAdaCompleted = uiItem.isAdaCompleted, 
                     scheduleType = "day"
+                    // Removed: orderIndex = uiItem.orderIndex
                 )
                 repository.updateTask(persistentItemToUpdate)
 
@@ -45,7 +49,7 @@ class DayTimeViewModel(private val repository: TaskDataRepository) : ViewModel()
                 } else {
                     repository.decrementStarCount("Ellie")
                 }
-            } ?: run { // Changed to run
+            } else {
                 println("DayTimeViewModel: Ellie star changed for unknown item ID: $itemId")
             }
         }
@@ -53,15 +57,16 @@ class DayTimeViewModel(private val repository: TaskDataRepository) : ViewModel()
 
     override fun adaStarStateChanged(itemId: Int, isNowCompleted: Boolean) {
         viewModelScope.launch {
-            val currentUiItem = todoItems.value?.find { it.id == itemId }
-            currentUiItem?.let {
+            val uiItem = todoItems.value?.find { it.id == itemId }
+            if (uiItem != null) {
                 val persistentItemToUpdate = PersistentTodoItem(
-                    id = it.id,
-                    taskName = it.name,
-                    imageResId = it.imageResId,
-                    isEllieCompleted = it.isEllieCompleted, 
+                    id = uiItem.id,
+                    taskName = uiItem.name,
+                    imageResId = uiItem.imageResId,
+                    isEllieCompleted = uiItem.isEllieCompleted, 
                     isAdaCompleted = isNowCompleted, 
                     scheduleType = "day"
+                    // Removed: orderIndex = uiItem.orderIndex
                 )
                 repository.updateTask(persistentItemToUpdate)
 
@@ -70,7 +75,7 @@ class DayTimeViewModel(private val repository: TaskDataRepository) : ViewModel()
                 } else {
                     repository.decrementStarCount("Ada")
                 }
-            } ?: run { // Changed to run
+            } else {
                 println("DayTimeViewModel: Ada star changed for unknown item ID: $itemId")
             }
         }
